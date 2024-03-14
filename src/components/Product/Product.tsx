@@ -4,21 +4,21 @@ import './Product.css';
 
 
 
-function Product({ description,image,price,rating,title }:ProductType) {
+function Product({ description,image,price,rating,title, amount = 1 }:ProductType) {
 
 
-  
-  const [amount, setAmount] = useState(1);
 
-  function amountIncrement() {
-    setAmount(state => state + 1);
-  }
+  // const [amount, setAmount] = useState(1);
 
-  function amountDecrement() {
-    if(amount > 1) {
-      setAmount(state => state - 1);
-    }
-  }
+  // function amountIncrement() {
+  //   setAmount(state => state + 1);
+  // }
+
+  // function amountDecrement() {
+  //   if(amount > 1) {
+  //     setAmount(state => state - 1);
+  //   }
+  // }
 
   function deleteProduct() {
     //возможно тут надо редаксом изменить состояние массива с продуктами
@@ -33,9 +33,9 @@ function Product({ description,image,price,rating,title }:ProductType) {
         <p className='product_price'>{`Цена: ${price * 90} руб.`}</p>
         <p className='product_rating'>{`Рейтинг: ${rating.rate} баллов, На основе ${rating.count} отзывов`}</p>
         <div className='product_amount'>
-            <button className='product_amount-button' onClick={amountDecrement}>-</button>
+            <button className='product_amount-button'>-</button>
             <p>{amount}</p>
-            <button className='product_amount-button' onClick={amountIncrement}>+</button>
+            <button className='product_amount-button'>+</button>
 
         </div>
     </li>
