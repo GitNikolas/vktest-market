@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/vktest-market/static/css/main.1669d8d0.css",
+    "main.js": "/vktest-market/static/js/main.e4c16d50.js",
+    "index.html": "/vktest-market/index.html",
+    "main.1669d8d0.css.map": "/vktest-market/static/css/main.1669d8d0.css.map",
+    "main.e4c16d50.js.map": "/vktest-market/static/js/main.e4c16d50.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1669d8d0.css",
+    "static/js/main.e4c16d50.js"
+  ]
+}
