@@ -6,7 +6,7 @@ export interface ProductType {
     price: number;
     rating: Rating;
     title: string;
-    amount:number;
+    amount?: number
 }
 
 interface Rating {

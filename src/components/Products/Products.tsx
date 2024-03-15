@@ -1,10 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { getProducts } from '../../utils/productsApi/getProducts';
-import { ProductType } from '../../types/ProductType';
 import './Products.css';
 import Product from '../Product/Product';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { fetchProducts } from './productsSlice';
+import TotalCost from '../TotalCost/TotalCost';
 
 function Products() {
 
@@ -19,7 +18,7 @@ function Products() {
   return (
     <section className='products'>
         <ul className='products_shopping-basket list-style'>
-            {products?.slice(0,5).map(product => 
+            {products?.map(product => 
             (<Product
             category = {product.category}
             description={product.description}
@@ -29,9 +28,10 @@ function Products() {
             rating={product.rating}
             title={product.title}    
             id={product.id}
+            amount={product.amount}
             ></Product>))}
         </ul>
-        <div className='products_total-cost'>Общая стоимость:</div>
+        <TotalCost/>
     </section>
   );
 }

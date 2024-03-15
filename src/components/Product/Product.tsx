@@ -1,27 +1,29 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { productsIncrement, productsDecrement, productDelete } from '../Products/productsSlice';
 import './Product.css';
 
 
 
-function Product({ description,image,price,rating,title, amount = 1 }:ProductType) {
+function Product({ description,image,price,rating,title,id,amount}:ProductType) {
 
+  const dispatch = useAppDispatch();
 
+  async function amountIncrement() {
+    if(amount !== undefined &&  amount < 10) {
+      dispatch(productsIncrement({id}));
+    }
+  }
 
-  // const [amount, setAmount] = useState(1);
-
-  // function amountIncrement() {
-  //   setAmount(state => state + 1);
-  // }
-
-  // function amountDecrement() {
-  //   if(amount > 1) {
-  //     setAmount(state => state - 1);
-  //   }
-  // }
+  function amountDecrement() {
+    if(amount !== undefined && amount > 1) {
+      dispatch(productsDecrement({id}));
+    }
+  }
 
   function deleteProduct() {
-    //возможно тут надо редаксом изменить состояние массива с продуктами
+    dispatch(productDelete(id));
   }
 
   return (
@@ -33,9 +35,9 @@ function Product({ description,image,price,rating,title, amount = 1 }:ProductTyp
         <p className='product_price'>{`Цена: ${price * 90} руб.`}</p>
         <p className='product_rating'>{`Рейтинг: ${rating.rate} баллов, На основе ${rating.count} отзывов`}</p>
         <div className='product_amount'>
-            <button className='product_amount-button'>-</button>
+            <button className='product_amount-button' onClick={amountDecrement}>-</button>
             <p>{amount}</p>
-            <button className='product_amount-button'>+</button>
+            <button className='product_amount-button' onClick={amountIncrement}>+</button>
 
         </div>
     </li>
