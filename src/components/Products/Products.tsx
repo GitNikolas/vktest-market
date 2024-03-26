@@ -17,7 +17,7 @@ function Products() {
 
   return (
     <section className='products'>
-        <ul className='products_shopping-basket list-style'>
+        <ul className='products__shopping-basket list-style'>
             {products?.map(product => 
             (<Product
             category = {product.category}
